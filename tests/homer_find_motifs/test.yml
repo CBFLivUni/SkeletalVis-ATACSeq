@@ -1,0 +1,7 @@
+- name: Test homer_find_motifs
+  command: nextflow run ./tests/homer_find_motifs/ -profile standard -entry test_HOMER_FIND_MOTIFS -with-singularity file://atac_annotate.img
+  tags:
+    - homer_find_motifs
+
+
+

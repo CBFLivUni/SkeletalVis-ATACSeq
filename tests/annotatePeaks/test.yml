@@ -1,0 +1,7 @@
+- name: Test annotatePeaks
+  command: nextflow run ./tests/annotatePeaks/ -profile standard -entry test_ANNOTATEPEAKS  -with-singularity file://atac_annotate.img
+  tags:
+    - annotatePeaks
+
+
+

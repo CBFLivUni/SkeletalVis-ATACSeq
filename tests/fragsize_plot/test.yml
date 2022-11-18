@@ -1,0 +1,7 @@
+- name: Test fragsize_plot
+  command: nextflow run ./tests/fragsize_plot/ -profile standard -entry test_FRAGSIZE_PLOT  -with-singularity file://atac_R.img
+  tags:
+    - fragsize_plot
+
+
+

@@ -1,0 +1,4 @@
+Sample	File	Treatment
+test1	1_S1	Ctrl
+test2	2_S2	Ctrl
+

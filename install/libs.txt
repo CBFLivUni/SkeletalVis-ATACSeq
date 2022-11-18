@@ -1,0 +1,10 @@
+XML
+tidyverse
+cowplot
+optparse
+DESeq2
+edgeR
+DirichletMultinomial
+rGREAT
+ATACseqQC
+DiffBind

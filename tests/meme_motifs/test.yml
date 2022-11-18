@@ -1,0 +1,7 @@
+- name: Test meme_motifs
+  command: nextflow run ./tests/meme_motifs/ -profile standard -entry test_MEME_MOTIFS -with-singularity file://atac_annotate.img
+  tags:
+    - meme_motifs
+
+
+

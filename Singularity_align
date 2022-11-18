@@ -1,0 +1,40 @@
+Bootstrap: docker
+From: eddelbuettel/r2u:jammy
+
+%environment
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export JAVA_LD_LIBRARY_PATH="${JAVA_HOME}"/jre/lib/amd64/server
+
+%files
+    ./install/* install/
+
+%post
+#install the common
+apt-get update &&
+apt-get -y install git bzip2 libglpk-dev libjpeg-dev libz-dev libxt-dev libtiff5-dev libbz2-dev libcurl4-openssl-dev
+
+   
+#install miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3
+rm Miniconda3-latest-Linux-x86_64.sh
+
+#set up conda to automatically activate when the singularity container is ran
+sudo ln -s /opt/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
+echo "conda activate diffbind" >> $SINGULARITY_ENVIRONMENT
+
+. /opt/miniconda3/etc/profile.d/conda.sh
+
+#install the software via conda
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda create --name diffbind python=3.6
+conda config --add channels bioconda
+conda activate diffbind
+conda install -c bioconda parallel-fastq-dump  samtools bowtie2 sambamba fastqc macs2 ucsc-bedgraphtobigwig bedtools
+
+
+
+
+

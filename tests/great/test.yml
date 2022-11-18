@@ -1,0 +1,7 @@
+- name: Test great
+  command: nextflow run ./tests/great/ -profile standard -entry test_GREAT -with-singularity file://atac_R.img
+  tags:
+    - great
+
+
+

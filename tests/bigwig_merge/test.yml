@@ -1,0 +1,7 @@
+- name: Test bigwig_merge
+  command: nextflow run ./tests/bigwig_merge/ -profile standard -entry test_BIGWIG_MERGE -with-singularity file://atac_bigwig.img
+  tags:
+    - bigwig_merge
+
+
+
