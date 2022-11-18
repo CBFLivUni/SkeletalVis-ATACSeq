@@ -64,8 +64,8 @@ Most parameters are set to sensible defaults within the main nextflow script, wi
 |accession|The GEO accession of the data - used to name output data and download fastq files||
 |species|The species the reads originate from - used to create the bowtie2 index	|human, mouse|
 |comparison|The column in the sample table that defines the contrast to make with diffBind|e.g Treatment, Condition|
-|Numerator|The column in the sample table that defines the baseline in the contrast to make with diffBind|e.g Control, Wildtype|
-|Denominator|The column in the sample table that defines the denominator in the comparison with diffBind|e.g Disease, Treated|
+|Numerator|The column in the sample table that defines the intervention in the contrast to make with diffBind|e.g Disease, Treated|
+|Denominator|The column in the sample table that defines the baseline in the comparison with diffBind|e.g Control, Wildtype|
 
 Parameters should be defined within a yaml file. See `params/example.yaml` for an example.
 
