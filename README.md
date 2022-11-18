@@ -14,7 +14,7 @@ The **SkeletalVis-ATAC-seq** pipeline takes a sample table and a parameter file 
 ### Features:
 (**a**) Download of fastq files either directly from ENA if not local<br/>
 (**b**) Quality control of reads with [`fastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)<br/>
-(**c**)	Alignment of sequencing reads with [`bowtie2`](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml) to produce bam files.
+(**c**)	Alignment of sequencing reads with [`bowtie2`](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml) to produce bam files.<br/>
 (**d**) Filtering of bam files to remove mitochondrial reads and PCR duplicates with [`sambamba`](https://lomereiter.github.io/sambamba/index.html)<br/>
 (**e**) Fragment size quality control plots with [`ATACseqQC`](https://bioconductor.org/packages/release/bioc/html/ATACseqQC.html)<br/>
 (**f**) Peak calling with [`MACS2`](https://pypi.org/project/MACS2/)<br/>
