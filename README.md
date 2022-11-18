@@ -25,6 +25,55 @@ The **SkeletalVis-ATAC-seq** pipeline takes a sample table and a parameter file 
 
 Analyses are run in parallel and in result of error you can resume with the `-resume` parameter to re-run the pipeline starting from the previous fault.
 
+### Analyse an example dataset
+
+Try the pipeline on an example dataset (all inputs will be automatically downloaded): -
+
+1. Install [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation)
+
+2. Install [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/)
+
+3. [`Configure`](https://www.nextflow.io/docs/latest/config.html) the resource profile for your HPC or local computer. A template for slurm schedulers is provided as an example in `nextflow.config`
+
+4. Download the pipeline and test on the example dataset:
+
+    ```console
+     nextflow clone CBFLivUni/SkeletalVis-ATACSeq
+     cd SkeletalVis-ATACSeq
+     nextflow run main.nf -profile slurm -params-file params/example.yaml
+     ```
+### Analyse your own data
+
+1. Define the sampleTable
+
+Create a tab seperated table with unique Sample names, SRR accession numbers (if download is needed) and any additional metadata e.g
+
+|Sample|File|Condition|
+| ---|---|---|
+|Control_1|SRRXXX	|Control|
+|Control_2|	SRRXXX	|Control|
+|Treated_1|	SRRXXX	|Treated|
+|Treated_2|	SRRXXX	|Treated|
+
+2. Define the configuration
+
+Most parameters are set to sensible defaults within the main nextflow script, with only 5 parameters required to be altered with typical use:
+
+|Parameter|Description|Options|
+| ---|---|---|
+|accession|The GEO accession of the data - used to name output data and download fastq files||
+|species|The species the reads originate from - used to create the bowtie2 index	|human, mouse|
+|comparison|The column in the sample table that defines the contrast to make with diffBind|e.g Treatment, Condition|
+|Numerator|The column in the sample table that defines the baseline in the contrast to make with diffBind|e.g Control, Wildtype|
+|Denominator|The column in the sample table that defines the denominator in the comparison with diffBind|e.g Disease, Treated|
+
+Parameters should be defined within a yaml file. See `params/example.yaml` for an example.
+
+3. Run the pipeline with your own parameters
+
+    ```console
+     nextflow run main.nf -profile slurm -params-file ownData.yaml
+    ```
 
 ### Testing modules
 Modules can be tested using the [`pytest-workflow`](https://pypi.org/project/pytest-workflow/) framework. Module test directories within the `tests` folder contain a nextflow script and a configuration yaml file defining the test for each module.
